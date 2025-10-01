@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+
+body {
+    font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    line-height: 1.6;
+    color: #000;
+    background: #002727;
+    padding: 20px;
+}
+
+
+.name,
+.section-title,
+.entry-title {
+    font-family: 'Lora', serif;
+}
+
+
+.resume-container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #f5f5f5;
+    padding: 60px 70px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1)
+}
+
+.header {
+    text-align: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px
+}
+
+.name {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+}
+
+.contact-info {
+    font-size: 15px;
+    line-height: 1.4
+}
+
+.contact-info a {
+    color: #000;
+    text-decoration: none
+}
+
+.contact-info a:hover {
+    text-decoration: underline
+}
+
+.section {
+    margin-top: 18px
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
+    color: #008f40;
+}
+
+.entry {
+    margin-bottom: 12px
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px
+}
+
+.entry-title {
+    font-weight: 700;
+    font-size: 15px
+}
+
+.entry-date {
+    font-style: italic;
+    font-size: 11px
+}
+
+.entry-subtitle {
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 4px
+}
+
+.entry-description {
+    font-size: 15px;
+    margin-left: 0;
+    line-height: 1.5
+}
+
+.entry-description ul {
+    margin-left: 18px;
+    margin-top: 3px
+}
+
+.entry-description li {
+    margin-bottom: 3px
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 14px
+}
+
+.skill-category {
+    margin-bottom: 5px
+}
+
+.skill-category strong {
+    font-weight: 700
+}
+
+@media print {
+    body {
+        background: #fff;
+        padding: 0
+    }
+
+    .resume-container {
+        box-shadow: none;
+        padding: 40px
+    }
+}
+
+@media (max-width:768px) {
+    .resume-container {
+        padding: 30px 25px
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+/* === Move date below title in entries === */
+.entry-header {
+    display: block;
+    margin-bottom: 6px;
+
+}
+
+.entry-title {
+    display: block;
+}
+
+.entry-date {
+    display: block;
+    margin-top: 2px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-size: 15px;
+    font-family: 'Consolas', monospace;
+    color: #444;
+}
+
+/* === Responsive container & typography === */
+:root {
+
+    --name-min: 2px;
+
+    --name-max: 25px;
+
+    --body-min: 14px;
+
+    --body-max: 16px;
+
+}
+
+
+body {
+    font-size: clamp(var(--body-min), 1.5vw, var(--body-max));
+}
+
+
+.resume-container {
+    padding: clamp(24px, 4vw, 60px) clamp(20px, 5vw, 70px);
+    max-width: min(92vw, 850px);
+}
+
+.name {
+
+    font-size: clamp(var(--name-min), 6vw, var(--name-max));
+    line-height: 1.1;
+    letter-spacing: clamp(1px, 0.4vw, 2px);
+
+    overflow: hidden;
+
+    text-overflow: clip;
+
+}
+
+
+.contact-info {
+    font-size: clamp(13px, 2.6vw, 15px);
+    line-height: 1.5;
+    word-break: keep-all;
+
+}
+
+
+.section-title {
+    font-size: clamp(16px, 2.8vw, 20px);
+}
+
+
+.entry-title {
+    font-size: clamp(14px, 2.6vw, 16px);
+}
+
+.entry-subtitle {
+    font-size: clamp(14px, 2.7vw, 16px);
+}
+
+.entry-description {
+    font-size: clamp(14px, 2.5vw, 15px);
+}
+
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(6px, 1.5vw, 12px);
+    font-size: clamp(13px, 2.4vw, 14px);
+}
+
+
+@media print {
+    .resume-container {
+        padding: 32px 36px;
+        max-width: 900px;
+    }
+
+    .name {
+        font-size: 28px;
+        letter-spacing: 1.5px;
+    }
+}
+
+
+@media (max-width: 420px) {
+    .header {
+        padding-bottom: 4px;
+        margin-bottom: 14px;
+    }
+
+    .section {
+        margin-top: 16px;
+    }
+
+    .entry {
+        margin-bottom: 10px;
+    }
+}
+
+
+:root {
+    --school-min: 2px;
+    --school-max: 15px;
+}
+
+
+#educationEntries .entry-subtitle {
+    font-size: clamp(var(--school-min), 4.2vw, var(--school-max));
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: clip;
+    letter-spacing: 0.2px;
+}
+
+
+@media (max-width: 360px) {
+    #educationEntries .entry-subtitle {
+        font-size: clamp(11px, 5vw, 16px);
+        letter-spacing: 0.1px;
+    }
+}
