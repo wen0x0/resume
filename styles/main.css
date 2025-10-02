@@ -61,7 +61,7 @@
     --space-li-mb: 3px;
 
     /* Layout sizes */
-    --container-max-w: 850px;
+    --container-max-w: 100vh;
     --container-max-w-screen: 92vw;
 
     /* Grid */
