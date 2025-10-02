@@ -1,78 +1,52 @@
 {
   "personalInfo": {
     "name": "Tong Nguyen Quoc Anh",
-    "address": "Ho Chi Minh City, Viet Nam",
-    "phone": "(+84)819283612",
+    "website": "wen.is-a.dev",
+    "phone": "(+82)819283612)",
     "email": "quocanhtn.work@gmail.com",
-    "linkedin": "linkedin.com/in/wenvn",
+    "linkedin": "https://linkedin.com/in/wenvn",
     "linkedinUrl": "https://linkedin.com/in/wenvn",
-    "about": "Proficient in system programming with expertise spanning Software Development and Cybersecurity, particularly in Application Security and Blue Team operations. Driven by a passion for low-level systems and core technologies."
+    "about": "Proficient in system programming with expertise in Software Development and Cybersecurity, focusing on Application Security and Blue Team operations. Passionate about low-level systems and core technologies."
   },
   "education": [
     {
       "degree": "Bachelor of Information Technology",
       "school": "HCMC University of Foreign Languages and Information Technology",
-      "date": "2022 — 2026",
+      "schoolLogo": "./assets/logos/huflit.png",
+      "date": "2022 – 2026",
       "details": [
-        "Graduated with Distinction",
-        "Concentration: Cybersecurity"
+        "Graduated with Distinction, concentrating in Cybersecurity. Received annual scholarships for academic excellence; consistently ranked among the top students in the program."
       ]
     }
   ],
   "experience": [
     {
-      "title": "Senior Product Manager",
-      "company": "Tech Innovations Inc.",
-      "location": "San Francisco, CA",
-      "date": "Jun 2023 - Present",
+      "title": "Software Engineer Intern",
+      "company": "Endava Vietnam",
+      "companyLogo": "./assets/logos/endava.png",
+      "date": "September 2025 – Present",
       "responsibilities": [
-        "Lead cross-functional team of 12 engineers and designers to deliver AI-powered analytics platform serving 50K+ users",
-        "Increased user engagement by 45% through data-driven feature prioritization and A/B testing methodology",
-        "Managed $2M product budget and coordinated with stakeholders across 5 departments",
-        "Established product roadmap resulting in 30% revenue growth year-over-year"
+        "Focused on C/C++ development for IMS/CSCF systems, working on simulation tools, message parsing, and session tracing, while gaining exposure to telecom protocols and Agile/DevOps workflows."
       ]
     },
     {
-      "title": "Product Manager",
-      "company": "Digital Solutions Corp.",
-      "location": "New York, NY",
-      "date": "Jul 2019 - May 2021",
+      "title": "Cybersecurity R&D Intern",
+      "company": "HPT Vietnam Corporation",
+      "companyLogo": "./assets/logos/hpt.jpg",
+      "date": "August 2025 – Present",
       "responsibilities": [
-        "Launched 3 major product features that contributed to $5M in additional annual revenue",
-        "Conducted user research with 200+ customers to identify pain points and opportunities",
-        "Collaborated with engineering team to reduce product development cycle time by 25%",
-        "Created product specifications and user stories for agile development sprints"
+        "Assisted in building pentesting (PtaaS) workflows, integrating automation into platforms with dashboards and reporting, and contributing to testing and documentation."
       ]
     }
   ],
   "skills": [
     {
       "category": "Technical",
-      "items": "Python, JavaScript, SQL, React, Node.js, Git"
+      "items": "C/C++, Bash, Git, Linux, Valgrind, Jenkins, Docker"
     },
     {
       "category": "Product Management",
-      "items": "Agile/Scrum, JIRA, Roadmapping, A/B Testing"
-    },
-    {
-      "category": "Analytics",
-      "items": "Google Analytics, Tableau, Mixpanel, Excel"
-    },
-    {
-      "category": "Languages",
-      "items": "English (Native), Spanish (Fluent), French (Conversational)"
-    }
-  ],
-  "projects": [
-    {
-      "title": "E-Commerce Platform Redesign",
-      "date": "2023",
-      "description": "Led complete redesign of checkout flow resulting in 28% increase in conversion rate and $1.2M additional quarterly revenue. Implemented user testing with 150 participants and iterative design process."
-    },
-    {
-      "title": "Machine Learning Recommendation System",
-      "date": "2022",
-      "description": "Developed collaborative filtering recommendation engine using Python and TensorFlow. Deployed to production serving 100K+ daily active users with 35% improvement in click-through rate."
+      "items": "Agile/Scrum, MS Planner"
     }
   ]
 }

@@ -1,259 +1,284 @@
+/* ========== Design Tokens ========== */
+:root {
+    /* Colors */
+    --color-text: #000;
+    --color-muted: #464646;
+    --color-page-bg: #002727;
+    --color-card-bg: #f5f5f5;
+    --color-border: #000;
+    --color-accent: #009b40;
+    --color-link: #000;
+    --color-link-hover: #000;
+    --brand-orange: #ff5800;
+
+    /* Typography families */
+    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Lora', serif;
+
+    /* Type scale (min/max clamp) */
+    --fz-body-min: 14px;
+    --fz-body-max: 16px;
+
+    --fz-name-min: 2px;
+    --fz-name-max: 25px;
+
+    --fz-school-min: 2px;
+    --fz-school-max: 15px;
+
+    --fz-section-title-min: 16px;
+    --fz-section-title-max: 20px;
+
+    --fz-entry-title-min: 14px;
+    --fz-entry-title-max: 16px;
+
+    --fz-entry-subtitle-min: 14px;
+    --fz-entry-subtitle-max: 16px;
+
+    --fz-entry-desc-min: 14px;
+    --fz-entry-desc-max: 15px;
+
+    --fz-contact-min: 13px;
+    --fz-contact-max: 15px;
+
+    --fz-date: 14px;
+
+    /* Spacing */
+    --space-page-pad: 20px;
+    --space-container-pad-y-min: 24px;
+    --space-container-pad-y-max: 60px;
+    --space-container-pad-x-min: 20px;
+    --space-container-pad-x-max: 70px;
+    --space-header-mb: 20px;
+    --space-header-pb: 10px;
+    --space-name-mb: 8px;
+    --space-name-pb: 5px;
+    --space-section-mt: 18px;
+    --space-section-title-mb: 10px;
+    --space-entry-mb: 12px;
+    --space-entry-header-mb: 6px;
+    --space-ul-ml: 18px;
+    --space-ul-mt: 3px;
+    --space-li-mb: 3px;
+
+    /* Layout sizes */
+    --container-max-w: 850px;
+    --container-max-w-screen: 92vw;
+
+    /* Grid */
+    --skills-col-min: 220px;
+    --skills-gap-min: 6px;
+    --skills-gap-max: 12px;
+
+    /* Effects */
+    --shadow: 0 0 10px rgba(0, 0, 0, .1);
+    --border-width: 1px;
+    --radius-card: 0px;
+
+    /* Logos */
+    --logo-size: 16px;
+    --logo-size-md: 25px;
+    --logo-size-print: 14px;
+    --logo-radius: 4px;
+
+    /* Breakpoints */
+    --bp-sm: 360px;
+    --bp-md: 420px;
+    --bp-lg: 768px;
+
+    /* Print overrides */
+    --print-bg: #fff;
+    --print-container-pad-y: 32px;
+    --print-container-pad-x: 36px;
+    --print-container-max-w: 900px;
+    --print-name-fz: 28px;
+    --print-name-letter: 1.5px;
+}
+
+/* ========== Reset ========== */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
-
+/* ========== Base ========== */
 body {
-    font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: var(--font-sans);
     line-height: 1.6;
-    color: #000;
-    background: #002727;
-    padding: 20px;
+    color: var(--color-text);
+    background: var(--color-page-bg);
+    padding: var(--space-page-pad);
+    font-size: clamp(var(--fz-body-min), 1.5vw, var(--fz-body-max));
 }
-
 
 .name,
 .section-title,
 .entry-title {
-    font-family: 'Lora', serif;
+    font-family: var(--font-serif);
 }
 
-
+/* ========== Container ========== */
 .resume-container {
-    max-width: 850px;
+    max-width: min(var(--container-max-w-screen), var(--container-max-w));
     margin: 0 auto;
-    background: #f5f5f5;
-    padding: 60px 70px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1)
+    background: var(--color-card-bg);
+    padding: clamp(var(--space-container-pad-y-min), 4vw, var(--space-container-pad-y-max)) clamp(var(--space-container-pad-x-min), 5vw, var(--space-container-pad-x-max));
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-card);
 }
 
+/* ========== Header & Contact ========== */
 .header {
     text-align: left;
-    margin-bottom: 20px;
-    padding-bottom: 10px
+    margin-bottom: var(--space-header-mb);
+    padding-bottom: var(--space-header-pb);
 }
 
 .name {
-    font-size: 24px;
+    font-size: clamp(var(--fz-name-min), 6vw, var(--fz-name-max));
     font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-    padding-bottom: 5px;
+    letter-spacing: clamp(1px, 0.4vw, 2px);
+    margin-bottom: var(--space-name-mb);
+    padding-bottom: var(--space-name-pb);
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: clip;
 }
 
 .contact-info {
-    font-size: 15px;
-    line-height: 1.4
+    font-size: clamp(var(--fz-contact-min), 2.6vw, var(--fz-contact-max));
+    line-height: 1.5;
+    word-break: keep-all;
 }
 
 .contact-info a {
-    color: #000;
-    text-decoration: none
+    color: var(--color-link);
+    text-decoration: none;
+    margin-right: 10px;
 }
 
 .contact-info a:hover {
-    text-decoration: underline
+    text-decoration: underline;
+    color: var(--color-link-hover);
 }
 
+/* ========== Sections ========== */
 .section {
-    margin-top: 18px
+    margin-top: var(--space-section-mt);
 }
 
 .section-title {
-    font-size: 20px;
+    font-size: clamp(var(--fz-section-title-min), 2.8vw, var(--fz-section-title-max));
     font-weight: 700;
-    text-transform: none;
     letter-spacing: 1px;
-    border-bottom: 1px solid #000;
+    border-bottom: var(--border-width) solid var(--color-border);
     padding-bottom: 2px;
-    margin-bottom: 10px;
-    color: #008f40;
+    margin-bottom: var(--space-section-title-mb);
+    color: var(--color-accent);
 }
 
+/* ========== Entries ========== */
 .entry {
-    margin-bottom: 12px
+    margin-bottom: var(--space-entry-mb);
 }
 
 .entry-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 3px
+    display: block;
+    margin-bottom: var(--space-entry-header-mb);
 }
 
 .entry-title {
+    display: block;
     font-weight: 700;
-    font-size: 15px
-}
-
-.entry-date {
-    font-style: italic;
-    font-size: 11px
+    font-size: clamp(var(--fz-entry-title-min), 2.6vw, var(--fz-entry-title-max));
 }
 
 .entry-subtitle {
-    font-style: italic;
-    font-size: 16px;
-    margin-bottom: 4px
+    font-size: clamp(var(--fz-entry-subtitle-min), 2.7vw, var(--fz-entry-subtitle-max));
+}
+
+.entry-date {
+    display: block;
+    text-transform: uppercase;
+    font-style: normal;
+    font-size: var(--fz-date);
+    color: var(--color-muted);
 }
 
 .entry-description {
-    font-size: 15px;
+    font-size: clamp(var(--fz-entry-desc-min), 2.5vw, var(--fz-entry-desc-max));
     margin-left: 0;
-    line-height: 1.5
+    line-height: 1.5;
 }
 
 .entry-description ul {
-    margin-left: 18px;
-    margin-top: 3px
+    margin-left: var(--space-ul-ml);
+    margin-top: var(--space-ul-mt);
 }
 
 .entry-description li {
-    margin-bottom: 3px
+    margin-bottom: var(--space-li-mb);
 }
 
+/* ========== Skills Grid ========== */
 .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    font-size: 14px
-}
-
-.skill-category {
-    margin-bottom: 5px
-}
-
-.skill-category strong {
-    font-weight: 700
-}
-
-@media print {
-    body {
-        background: #fff;
-        padding: 0
-    }
-
-    .resume-container {
-        box-shadow: none;
-        padding: 40px
-    }
-}
-
-@media (max-width:768px) {
-    .resume-container {
-        padding: 30px 25px
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr
-    }
-}
-
-/* === Move date below title in entries === */
-.entry-header {
     display: block;
-    margin-bottom: 6px;
-
-}
-
-.entry-title {
-    display: block;
-}
-
-.entry-date {
-    display: block;
-    margin-top: 2px;
-    text-transform: uppercase;
-    font-style: normal;
-    font-size: 15px;
-    font-family: 'Consolas', monospace;
-    color: #444;
-}
-
-/* === Responsive container & typography === */
-:root {
-
-    --name-min: 2px;
-
-    --name-max: 25px;
-
-    --body-min: 14px;
-
-    --body-max: 16px;
-
-}
-
-
-body {
-    font-size: clamp(var(--body-min), 1.5vw, var(--body-max));
-}
-
-
-.resume-container {
-    padding: clamp(24px, 4vw, 60px) clamp(20px, 5vw, 70px);
-    max-width: min(92vw, 850px);
-}
-
-.name {
-
-    font-size: clamp(var(--name-min), 6vw, var(--name-max));
-    line-height: 1.1;
-    letter-spacing: clamp(1px, 0.4vw, 2px);
-
-    overflow: hidden;
-
-    text-overflow: clip;
-
-}
-
-
-.contact-info {
-    font-size: clamp(13px, 2.6vw, 15px);
-    line-height: 1.5;
-    word-break: keep-all;
-
-}
-
-
-.section-title {
-    font-size: clamp(16px, 2.8vw, 20px);
-}
-
-
-.entry-title {
-    font-size: clamp(14px, 2.6vw, 16px);
-}
-
-.entry-subtitle {
-    font-size: clamp(14px, 2.7vw, 16px);
-}
-
-.entry-description {
-    font-size: clamp(14px, 2.5vw, 15px);
-}
-
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: clamp(6px, 1.5vw, 12px);
+    grid-template-columns: repeat(auto-fit, minmax(var(--skills-col-min), 1fr));
+    gap: clamp(var(--skills-gap-min), 1.5vw, var(--skills-gap-max));
     font-size: clamp(13px, 2.4vw, 14px);
 }
 
-
-@media print {
-    .resume-container {
-        padding: 32px 36px;
-        max-width: 900px;
-    }
-
-    .name {
-        font-size: 28px;
-        letter-spacing: 1.5px;
-    }
+.skill-category {
+    margin-bottom: 5px;
 }
 
+.skill-category strong {
+    font-weight: 700;
+}
+
+/* Education school line clamp */
+#educationEntries .entry-subtitle {
+    font-size: clamp(var(--fz-school-min), 4.2vw, var(--fz-school-max));
+    line-height: 1.2;
+    overflow: hidden;
+    letter-spacing: 0.2px;
+}
+
+/* ========== Inline line + logo ========== */
+.entry-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.entry-title,
+.entry-subtitle {
+    display: block;
+}
+
+.sep {
+    margin: 0;
+}
+
+.entry-logo {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    object-fit: contain;
+    vertical-align: middle;
+    border-radius: var(--logo-radius);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+    .resume-container {
+        padding: 30px 25px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media (max-width: 420px) {
     .header {
@@ -270,25 +295,58 @@ body {
     }
 }
 
-
-:root {
-    --school-min: 2px;
-    --school-max: 15px;
-}
-
-
-#educationEntries .entry-subtitle {
-    font-size: clamp(var(--school-min), 4.2vw, var(--school-max));
-    line-height: 1.2;
-    overflow: hidden;
-    text-overflow: clip;
-    letter-spacing: 0.2px;
-}
-
-
 @media (max-width: 360px) {
     #educationEntries .entry-subtitle {
         font-size: clamp(11px, 5vw, 16px);
         letter-spacing: 0.1px;
     }
+}
+
+/* ========== Adaptive ========== */
+@media screen and (min-width: 768px) {
+    .entry-logo {
+        width: var(--logo-size-md);
+        height: var(--logo-size-md);
+    }
+}
+
+/* ========== Print ========== */
+@media print {
+    body {
+        background: var(--print-bg);
+        padding: 0;
+    }
+
+    .resume-container {
+        box-shadow: none;
+        padding: var(--print-container-pad-y) var(--print-container-pad-x);
+        max-width: var(--print-container-max-w);
+    }
+
+    .name {
+        font-size: var(--print-name-fz);
+        letter-spacing: var(--print-name-letter);
+    }
+
+    .entry-logo {
+        width: var(--logo-size-print);
+        height: var(--logo-size-print);
+    }
+}
+
+#about {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-text);
+    font-size: clamp(13px, 2.6vw, 15px);
+}
+
+.entry-logo {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.entry-title:hover .entry-logo,
+.entry-subtitle:hover .entry-logo {
+  opacity: 1;
 }

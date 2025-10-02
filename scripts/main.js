@@ -7,15 +7,16 @@ async function loadResume() {
     renderResume(resumeData);
   } catch (err) {
     console.error(err);
-    document.body.innerHTML = '<div style="max-width:800px;margin:2rem auto;font-family:system-ui,sans-serif"><h1>Failed to load resume</h1><p>Please ensure <code>data/resume.json</code> exists and is valid JSON.</p><pre>'+String(err)+'</pre></div>';
+    document.body.innerHTML = '<div style="max-width:800px;margin:2rem auto;font-family:system-ui,sans-serif"><h1>Failed to load resume</h1><p>Please ensure <code>data/resume.json</code> exists and is valid JSON.</p><pre>' + String(err) + '</pre></div>';
   }
 }
 
 function renderResume(data) {
   // Personal Info
   document.getElementById('fullName').textContent = data.personalInfo.name;
-  document.getElementById('address').textContent = data.personalInfo.address;
-  document.getElementById('phone').textContent = data.personalInfo.phone;
+  const websiteEl = document.getElementById('website');
+  websiteEl.textContent = data.personalInfo.website;
+  websiteEl.href = `https://${data.personalInfo.website}`;
   const emailEl = document.getElementById('email');
   emailEl.textContent = data.personalInfo.email;
   emailEl.href = `mailto:${data.personalInfo.email}`;
@@ -27,66 +28,83 @@ function renderResume(data) {
 
   // Education
   const eduContainer = document.getElementById('educationEntries');
-  eduContainer.innerHTML = (data.education||[]).map(edu => `
-    <div class="entry">
-      <div class="entry-header">
-        <div class="entry-title">${escapeHTML(edu.degree)}</div>
-        <div class="entry-date">${escapeHTML(edu.date)}</div>
+  eduContainer.innerHTML = (data.education || []).map(edu => `
+  <div class="entry">
+    <div class="entry-header">
+      <div class="entry-title">${escapeHTML(edu.degree)}</div>
+      <div class="entry-subtitle">
+        <span class="entry-line">
+          <span>${escapeHTML(edu.school)}</span>
+          ${logoImg(edu.schoolLogo, edu.school || '')}
+        </span>
       </div>
-      <div class="entry-subtitle">${escapeHTML(edu.school)}</div>
-      <div class="entry-description">
-        <ul>
-          ${(edu.details||[]).map(d=>`<li>${escapeHTML(d)}</li>`).join('')}
-        </ul>
-      </div>
+      <div class="entry-date">${escapeHTML(edu.date)}</div>
     </div>
-  `).join('');
+    <div class="entry-description">
+      ${escapeHTML(textFrom(edu.details))}
+    </div>
+  </div>
+`).join('');
+
+
 
   // Experience
   const expContainer = document.getElementById('experienceEntries');
-  expContainer.innerHTML = (data.experience||[]).map(exp => `
-    <div class="entry">
-      <div class="entry-header">
-        <div class="entry-title">${escapeHTML(exp.title)}</div>
-        <div class="entry-date">${escapeHTML(exp.date)}</div>
+  expContainer.innerHTML = (data.experience || []).map(exp => `
+  <div class="entry">
+    <div class="entry-header">
+      <div class="entry-title">${escapeHTML(exp.title)}</div>
+      <div class="entry-subtitle">
+        <span class="entry-line">
+          <span>${escapeHTML(exp.company)}</span>
+          ${logoImg(exp.companyLogo, exp.company || '')}
+        </span>
       </div>
-      <div class="entry-subtitle">${escapeHTML(exp.company)}, ${escapeHTML(exp.location)}</div>
-      <div class="entry-description">
-        <ul>
-          ${(exp.responsibilities||[]).map(r=>`<li>${escapeHTML(r)}</li>`).join('')}
-        </ul>
-      </div>
+      <div class="entry-date">${escapeHTML(exp.date)}</div>
     </div>
-  `).join('');
+    <div class="entry-description">
+      ${escapeHTML(textFrom(exp.responsibilities))}
+    </div>
+  </div>
+`).join('');
+
+
 
   // Skills
   const skillsContainer = document.getElementById('skillsGrid');
-  skillsContainer.innerHTML = (data.skills||[]).map(s=>`
+  skillsContainer.innerHTML = (data.skills || []).map(s => `
     <div class="skill-category">
       <strong>${escapeHTML(s.category)}:</strong> ${escapeHTML(s.items)}
     </div>
   `).join('');
 
-  // Projects
-  const projContainer = document.getElementById('projectEntries');
-  projContainer.innerHTML = (data.projects||[]).map(p=>`
-    <div class="entry">
-      <div class="entry-header">
-        <div class="entry-title">${escapeHTML(p.title)}</div>
-        <div class="entry-date">${escapeHTML(p.date)}</div>
-      </div>
-      <div class="entry-description">${escapeHTML(p.description)}</div>
-    </div>
-  `).join('');
 }
 
-function escapeHTML(str){
+function escapeHTML(str) {
   return String(str)
-    .replaceAll('&','&amp;')
-    .replaceAll('<','&lt;')
-    .replaceAll('>','&gt;')
-    .replaceAll('"','&quot;')
-    .replaceAll("'",'&#39;');
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
+function logoImg(url, alt) {
+  if (!url) return '';
+  return `<img class="entry-logo" src="${url}" alt="${escapeHTML(alt)} logo" loading="lazy" referrerpolicy="no-referrer">`;
+}
+
+function textFrom(value) {
+  if (Array.isArray(value)) {
+    const trimmed = value
+      .map(v => String(v).trim())
+      .filter(Boolean)
+      .map(s => /[.!?…]$/.test(s) ? s : s + '.');
+    return trimmed.join(' ');
+  }
+  if (value == null) return '';
+  const s = String(value).trim();
+  return s;
+}
+
 
 document.addEventListener('DOMContentLoaded', loadResume);
