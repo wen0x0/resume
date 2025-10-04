@@ -11,47 +11,28 @@
     --color-link-hover: #000;
     --brand-orange: #ff5800;
 
-    /* Typography families */
-    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-serif: 'Lora', serif;
+    /* Typography */
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-serif: "Lora", serif;
 
-    /* Type scale (min/max clamp) */
-    --fz-body-min: 14px;
-    --fz-body-max: 16px;
-
-    --fz-name-min: 2px;
-    --fz-name-max: 25px;
-
-    --fz-school-min: 2px;
-    --fz-school-max: 15px;
-
-    --fz-section-title-min: 16px;
-    --fz-section-title-max: 20px;
-
-    --fz-entry-title-min: 14px;
-    --fz-entry-title-max: 16px;
-
-    --fz-entry-subtitle-min: 14px;
-    --fz-entry-subtitle-max: 16px;
-
-    --fz-entry-desc-min: 14px;
-    --fz-entry-desc-max: 15px;
-
-    --fz-contact-min: 13px;
-    --fz-contact-max: 15px;
-
+    /* Font sizes */
+    --fz-body: clamp(14px, 1.5vw, 16px);
+    --fz-name: clamp(20px, 6vw, 25px);
+    --fz-section-title: clamp(16px, 2.8vw, 20px);
+    --fz-entry-title: clamp(14px, 2.6vw, 16px);
+    --fz-entry-subtitle: clamp(14px, 2.7vw, 16px);
+    --fz-entry-desc: clamp(14px, 2.5vw, 15px);
+    --fz-contact: clamp(13px, 2.6vw, 15px);
     --fz-date: 14px;
 
     /* Spacing */
     --space-page-pad: 20px;
-    --space-container-pad-y-min: 24px;
-    --space-container-pad-y-max: 60px;
-    --space-container-pad-x-min: 20px;
-    --space-container-pad-x-max: 70px;
+    --space-container-pad-y: clamp(20px, 4vw, 60px);
+    --space-container-pad-x: clamp(20px, 5vw, 60px);
     --space-header-mb: 20px;
     --space-header-pb: 10px;
     --space-name-mb: 8px;
-    --space-name-pb: 5px;
+    --space-name-pb: 5px;   
     --space-section-mt: 18px;
     --space-section-title-mb: 10px;
     --space-entry-mb: 12px;
@@ -60,17 +41,16 @@
     --space-ul-mt: 3px;
     --space-li-mb: 3px;
 
-    /* Layout sizes */
+    /* Layout */
     --container-max-w: 100vh;
     --container-max-w-screen: 92vw;
 
-    /* Grid */
+    /* Skills grid */
     --skills-col-min: 220px;
-    --skills-gap-min: 6px;
-    --skills-gap-max: 12px;
+    --skills-gap: clamp(6px, 1.5vw, 12px);
 
     /* Effects */
-    --shadow: 0 0 10px rgba(0, 0, 0, .1);
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     --border-width: 1px;
     --radius-card: 0px;
 
@@ -85,7 +65,7 @@
     --bp-md: 420px;
     --bp-lg: 768px;
 
-    /* Print overrides */
+    /* Print */
     --print-bg: #fff;
     --print-container-pad-y: 32px;
     --print-container-pad-x: 36px;
@@ -108,7 +88,7 @@ body {
     color: var(--color-text);
     background: var(--color-page-bg);
     padding: var(--space-page-pad);
-    font-size: clamp(var(--fz-body-min), 1.5vw, var(--fz-body-max));
+    font-size: var(--fz-body);
 }
 
 .name,
@@ -117,12 +97,19 @@ body {
     font-family: var(--font-serif);
 }
 
+.fixed-name {
+    white-space: nowrap;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding-top: 1em;
+}
+
 /* ========== Container ========== */
 .resume-container {
     max-width: min(var(--container-max-w-screen), var(--container-max-w));
     margin: 0 auto;
     background: var(--color-card-bg);
-    padding: clamp(var(--space-container-pad-y-min), 4vw, var(--space-container-pad-y-max)) clamp(var(--space-container-pad-x-min), 5vw, var(--space-container-pad-x-max));
+    padding: var(--space-container-pad-y) var(--space-container-pad-x);
     box-shadow: var(--shadow);
     border-radius: var(--radius-card);
 }
@@ -135,18 +122,17 @@ body {
 }
 
 .name {
-    font-size: clamp(var(--fz-name-min), 6vw, var(--fz-name-max));
+    font-size: var(--fz-name);
     font-weight: 700;
     letter-spacing: clamp(1px, 0.4vw, 2px);
     margin-bottom: var(--space-name-mb);
     padding-bottom: var(--space-name-pb);
     line-height: 1.1;
     overflow: hidden;
-    text-overflow: clip;
 }
 
 .contact-info {
-    font-size: clamp(var(--fz-contact-min), 2.6vw, var(--fz-contact-max));
+    font-size: var(--fz-contact);
     line-height: 1.5;
     word-break: keep-all;
 }
@@ -158,8 +144,8 @@ body {
 }
 
 .contact-info a:hover {
-    text-decoration: underline;
     color: var(--color-link-hover);
+    text-decoration: underline;
 }
 
 /* ========== Sections ========== */
@@ -168,7 +154,7 @@ body {
 }
 
 .section-title {
-    font-size: clamp(var(--fz-section-title-min), 2.8vw, var(--fz-section-title-max));
+    font-size: var(--fz-section-title);
     font-weight: 700;
     letter-spacing: 1px;
     border-bottom: var(--border-width) solid var(--color-border);
@@ -183,31 +169,26 @@ body {
 }
 
 .entry-header {
-    display: block;
     margin-bottom: var(--space-entry-header-mb);
 }
 
 .entry-title {
-    display: block;
     font-weight: 700;
-    font-size: clamp(var(--fz-entry-title-min), 2.6vw, var(--fz-entry-title-max));
+    font-size: var(--fz-entry-title);
 }
 
 .entry-subtitle {
-    font-size: clamp(var(--fz-entry-subtitle-min), 2.7vw, var(--fz-entry-subtitle-max));
+    font-size: var(--fz-entry-subtitle);
 }
 
 .entry-date {
-    display: block;
-    text-transform: uppercase;
-    font-style: normal;
+    text-transform: none;
     font-size: var(--fz-date);
     color: var(--color-muted);
 }
 
 .entry-description {
-    font-size: clamp(var(--fz-entry-desc-min), 2.5vw, var(--fz-entry-desc-max));
-    margin-left: 0;
+    font-size: var(--fz-entry-desc);
     line-height: 1.5;
 }
 
@@ -224,27 +205,23 @@ body {
 .skills-grid {
     display: block;
     grid-template-columns: repeat(auto-fit, minmax(var(--skills-col-min), 1fr));
-    gap: clamp(var(--skills-gap-min), 1.5vw, var(--skills-gap-max));
+    gap: var(--skills-gap);
     font-size: clamp(13px, 2.4vw, 14px);
-}
-
-.skill-category {
-    margin-bottom: 5px;
 }
 
 .skill-category strong {
     font-weight: 700;
 }
 
-/* Education school line clamp */
+/* Education subtitle */
 #educationEntries .entry-subtitle {
-    font-size: clamp(var(--fz-school-min), 4.2vw, var(--fz-school-max));
     line-height: 1.2;
-    overflow: hidden;
+    font-size: clamp(12px, 4vw, 15px);
     letter-spacing: 0.2px;
+    overflow: hidden;
 }
 
-/* ========== Inline line + logo ========== */
+/* ========== Inline logo ========== */
 .entry-line {
     display: inline-flex;
     align-items: center;
@@ -252,21 +229,26 @@ body {
     flex-wrap: wrap;
 }
 
-.entry-title,
-.entry-subtitle {
-    display: block;
-}
-
-.sep {
-    margin: 0;
-}
-
 .entry-logo {
     width: var(--logo-size);
     height: var(--logo-size);
     object-fit: contain;
-    vertical-align: middle;
     border-radius: var(--logo-radius);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.entry-title:hover .entry-logo,
+.entry-subtitle:hover .entry-logo {
+    opacity: 1;
+}
+
+/* ========== About Section ========== */
+#about {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--color-text);
+    font-size: var(--fz-contact);
 }
 
 /* ========== Responsive ========== */
@@ -302,8 +284,7 @@ body {
     }
 }
 
-/* ========== Adaptive ========== */
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
     .entry-logo {
         width: var(--logo-size-md);
         height: var(--logo-size-md);
@@ -315,6 +296,7 @@ body {
     body {
         background: var(--print-bg);
         padding: 0;
+        zoom: 0.9;
     }
 
     .resume-container {
@@ -334,19 +316,37 @@ body {
     }
 }
 
-#about {
+/* ========== Prevent Line Wrapping & Auto Scale ========== */
+.name,
+.section-title,
+.entry-title,
+#educationEntries .entry-subtitle {
+    white-space: nowrap;
+    overflow: visible;
     display: inline-block;
-    margin-top: 10px;
-    color: var(--color-text);
-    font-size: clamp(13px, 2.6vw, 15px);
+    transform-origin: left center;
+    max-width: 100%;
 }
 
-.entry-logo {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+@supports (text-wrap: balance) {
+
+    .name,
+    .section-title,
+    .entry-title,
+    #educationEntries .entry-subtitle {
+        text-wrap: balance;
+    }
 }
 
-.entry-title:hover .entry-logo,
-.entry-subtitle:hover .entry-logo {
-  opacity: 1;
+.name {
+    font-size: clamp(10px, 5vw, 25px);
+}
+
+.section-title {
+    font-size: clamp(10px, 3vw, 20px);
+}
+
+.entry-title,
+#educationEntries .entry-subtitle {
+    font-size: clamp(9px, 2.8vw, 16px);
 }

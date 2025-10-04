@@ -13,7 +13,11 @@ async function loadResume() {
 
 function renderResume(data) {
   // Personal Info
-  document.getElementById('fullName').textContent = data.personalInfo.name;
+  const nameEl = document.getElementById('fullName');
+  const fullName = data.personalInfo.name.split(' ');
+  const firstPart = fullName.slice(0, -2).join(' '); 
+  const lastPart = fullName.slice(-2).join(' '); 
+  nameEl.innerHTML = `${firstPart} <span class="fixed-name">${lastPart}</span>`;
   const websiteEl = document.getElementById('website');
   websiteEl.textContent = data.personalInfo.website;
   websiteEl.href = `https://${data.personalInfo.website}`;
